@@ -1,0 +1,100 @@
+{
+	"data" : [
+		{
+			"name": "Human Resource Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 5,
+			"status": "active"
+		},
+		{
+			"name": "Digital Marketting Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 16,
+			"status": "active"
+		},
+		{
+			"name": "Managers Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 11,
+			"status": "active"
+		},
+		{
+			"name": "Senior Mangers Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 3,
+			"status": "active"
+		},
+		{
+			"name": "Client Servicing Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 10,
+			"status": "active"
+		},
+		{
+			"name": "Java Developers Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 20,
+			"status": "active"
+		},
+		{
+			"name": "Sharepoint Developers Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 5,
+			"status": "active"
+		},
+		{
+			"name": "User Experience Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 5,
+			"status": "active"
+		},
+		{
+			"name": "UI Develeopers Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 8,
+			"status": "active"
+		},
+		{
+			"name": "Full Stack Developers Group",
+			"createdDate": "26/08/2018",
+			"noOfContacts": 6,
+			"status": "active"
+		},
+		{
+			"name": "SQL/DBMS Developers Group",
+			"createdDate": "09/08/2018",
+			"noOfContacts": 3,
+			"status": "active"
+		},
+		{
+			"name": "Events Managers Group",
+			"createdDate": "25/08/2018",
+			"noOfContacts": 8,
+			"status": "inactive"
+		},
+		{
+			"name": "Canteen Group",
+			"createdDate": "16/07/2018",
+			"noOfContacts": 12,
+			"status": "active"
+		},
+		{
+			"name": "System Security Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 5,
+			"status": "active"
+		},
+		{
+			"name": "System Administration Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 5,
+			"status": "inactive"
+		},
+		{
+			"name": "security Group",
+			"createdDate": "05/09/2018",
+			"noOfContacts": 20,
+			"status": "inactive"
+		}
+	]
+}

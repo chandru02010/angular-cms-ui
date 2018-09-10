@@ -1,0 +1,21 @@
+
+@media screen and (max-width: 991px) {
+    .navbar-collapse {
+        border: solid 1px;
+        background-color: rgba(255,255,255,.1);
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .navbar-collapse .ml-auto {
+        text-align: right;
+    }
+    .user-name {
+        display: block;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .navbar-collapse .btn {
+        margin-right: .5rem;
+    }
+}

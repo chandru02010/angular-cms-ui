@@ -1,0 +1,1 @@
+﻿export * from './contact-group-details.component';

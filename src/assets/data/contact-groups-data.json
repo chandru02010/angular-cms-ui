@@ -1,0 +1,238 @@
+{
+	"data" : [
+		{
+			"user": "chandru02010@inmar.com",
+			"groupsData": [
+				{
+					"name": "Human Resource Group",
+					"createdDate": "05/09/2018",
+					"noOfContacts": 5,
+					"status": "active",
+					"contactsData": [
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Arul",
+							"lastName": "Srinivasan",
+							"contactNo": "806000000",
+							"email": "arul@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Manigandan",
+							"lastName": "MD",
+							"contactNo": "7660078900",
+							"email": "manigandan@inmar.com",
+							"createdDate": "25/08/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Bhaskar",
+							"lastName": "Mondal",
+							"contactNo": "989000000",
+							"email": "bhaskar@inmar.com",
+							"createdDate": "28/07/2018",
+							"status": "inactive"
+						}
+					]
+				},
+				{
+					"name": "Digital Marketting Group",
+					"createdDate": "05/09/2018",
+					"noOfContacts": 16,
+					"status": "active",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Arul",
+							"lastName": "Srinivasan",
+							"contactNo": "806000000",
+							"email": "arul@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Manigandan",
+							"lastName": "MD",
+							"contactNo": "7660078900",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "25/08/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Bhaskar",
+							"lastName": "Mondal",
+							"contactNo": "989000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "28/07/2018",
+							"status": "inactive"
+						}
+					]
+				},
+				{
+					"name": "Managers Group",
+					"createdDate": "05/09/2018",
+					"status": "inactive",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				},
+				{
+					"name": "Senior Mangers Group",
+					"createdDate": "05/09/2018",
+					"status": "inactive",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				},
+				{
+					"name": "Client Servicing Group",
+					"createdDate": "25/08/2018",
+					"status": "inactive",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				},
+				{
+					"name": "Java Developers Group",
+					"createdDate": "15/07/2018",
+					"status": "active",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				},
+				{
+					"name": "System Security Group",
+					"createdDate": "16/07/2018",
+					"status": "active",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				},
+				{
+					"name": "Events Managers Group",
+					"createdDate": "06/05/2018",
+					"status": "inactive",
+					"contactsData": [
+						{
+							"firstName": "Pappu",
+							"lastName": "Kumar",
+							"contactNo": "886000000",
+							"email": "pappu@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						},
+						{
+							"firstName": "Hridesh",
+							"lastName": "Kumar",
+							"contactNo": "986000000",
+							"email": "hridhesh@inmar.com",
+							"createdDate": "05/09/2018",
+							"status": "active"
+						}
+					]
+				}
+			]
+		},
+		{
+			"user": "somenone@inmar.com"
+		}
+	]
+}

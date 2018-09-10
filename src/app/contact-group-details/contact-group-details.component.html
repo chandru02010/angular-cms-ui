@@ -1,0 +1,270 @@
+<app-page-loading *ngIf="pageLoading"></app-page-loading>
+<app-header-nav></app-header-nav>
+<div class="col main-body">
+    <!-- <div class="row">
+        <div class="col">
+            <div class="group-details-wrapper">
+                
+            </div>
+        </div>
+    </div> -->
+    <div class="row" *ngIf=" contactsData.length==0">
+        <div class="col">
+            <div class="form-wrapper">
+                <h4 class="strong">Your Group: <span class="color-green">{{contactGroupObj.name}}</span></h4>
+                <hr>
+                <h5 class="title">Create your first contact!</h5>
+                <form (keydown.enter)="$event.preventDefault()" [formGroup]="createContactForm" (ngSubmit)="formSubmit($event)">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" formControlName ="firstName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.firstName.errors) || (f.firstName.invalid && f.firstName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                        <div *ngIf="(submitted && f.firstName.errors) || (f.firstName.invalid && f.firstName.touched)" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">Email is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" formControlName ="lastName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.lastName.errors) || (f.lastName.invalid && f.lastName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                        <div *ngIf="(submitted && f.lastName.errors) || (f.lastName.invalid && f.lastName.touched)" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required">Email is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Id</label>
+                        <input type="text" formControlName ="email" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.email.errors) || (f.email.invalid && f.email.touched) }" placeholder="{{commonPlaceholder}}">
+
+                        <div *ngIf="(submitted && f.email.errors) || (f.email.invalid && f.email.touched)" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.pattern">Email format should be <strong>someone@inmar.com</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" formControlName ="contactNo" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.contactNo.errors) || (f.contactNo.invalid && f.contactNo.touched) }" placeholder="{{commonPlaceholder}}">
+
+                        <div *ngIf="(submitted && f.contactNo.errors) || (f.contactNo.invalid && f.contactNo.touched)" class="invalid-feedback">
+                            <div *ngIf="f.contactNo.errors.required">Email is required</div>
+                            <div *ngIf="f.contactNo.errors.pattern">Contact number should be  <strong>10</strong> digits</div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" [disabled] ="!createContactForm.valid" class="btn btn-primary">Create Contact</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" #tableWrapper [ngClass]="{'display-block': contactsData.length>0, 'display-none': contactsData.length==0}">
+        <div class="col-md-12  mb-15">
+            <div class="main-header">
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <h5 class="color-white">Your contact details</h5>
+                        <p><strong>Group: </strong> {{contactGroupObj.name}} | <strong>Created On: </strong> {{contactGroupObj.createdDate}}</p>
+                    </div>
+                    <div class="col-12 col-md-4 text-right">
+                        <a class="btn btn-light btn-sm" (click)="createContact()">Create Contact</a>
+                        <a class="btn btn-primary btn-sm" (click)="backBtn()">Back</a>
+                    </div>
+                </div>                
+            </div> 
+            
+        </div>
+        <div class="col-md-12">
+            <table #tableDiv datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" data-priority="1">Name</th>
+                        <th scope="col">Email Id</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" data-priority="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of contactsData">
+                    <td>{{item.firstName}} {{item.lastName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.contactNo}}</td>
+                    <td>{{item.createdDate}}</td>
+                    <td  [ngClass]="{'color-green': item.status=='active', 'color-red': item.status=='inactive'}">{{item.status}}</td>
+                    <td>
+                      <!-- <a class="btn btn-sm btn-info" (click)="viewGroup(item)">Veiw</a> -->
+                      <a class="btn btn-sm btn-warning" (click)="modifyGroup(item)">Modify</a>
+                      <a class="btn btn-sm btn-danger" (click)="deleteGroup(item)">Delete</a>
+
+                      <!-- <a class="btn btn-block btn-sm btn-primary"  routerLink="/contact-group-details">Veiw / Modify</a> -->
+                      
+          
+                      <!-- <a *ngIf="item.status==true" class="btn btn-block btn-sm btn-success"  (click)="validateDoc(item, doc)" routerLink="/document-validation/{{item.caseId}}/{{item.validatedDocType}}/{{item.caseFilled}}">Veiw / Modify</a> -->
+                    </td>
+                  </tr>
+                </tbody>
+          
+                
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- confirmDeleteModal Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Confirmation Dialog </h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div>Are you really want delete this group and its contacts?</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" (click)="confirmDeleteGroup(selectedContact)">Confirm</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- createGroupModal Modal -->
+<div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create a new contact! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="form-wrapper">
+                        
+                        <form (keydown.enter)="$event.preventDefault()" [formGroup]="createContactForm" (ngSubmit)="formSubmit($event)">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" formControlName ="firstName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.firstName.errors) || (f.firstName.invalid && f.firstName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && f.firstName.errors) || (f.firstName.invalid && f.firstName.touched)" class="invalid-feedback">
+                                    <div *ngIf="f.firstName.errors.required">Email is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" formControlName ="lastName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.lastName.errors) || (f.lastName.invalid && f.lastName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && f.lastName.errors) || (f.lastName.invalid && f.lastName.touched)" class="invalid-feedback">
+                                    <div *ngIf="f.lastName.errors.required">Email is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Id</label>
+                                <input type="text" formControlName ="email" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.email.errors) || (f.email.invalid && f.email.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && f.email.errors) || (f.email.invalid && f.email.touched)" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.pattern">Email format should be <strong>someone@inmar.com</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="text" formControlName ="contactNo" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.contactNo.errors) || (f.contactNo.invalid && f.contactNo.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && f.contactNo.errors) || (f.contactNo.invalid && f.contactNo.touched)" class="invalid-feedback">
+                                    <div *ngIf="f.contactNo.errors.required">Email is required</div>
+                                    <div *ngIf="f.contactNo.errors.pattern">Contact number should be  <strong>10</strong> digits</div>
+                                </div>
+                            </div>
+
+                            
+                            <button type="submit" [disabled] ="!createContactForm.valid" class="btn btn-primary">Create Contact</button>
+                        </form>
+                    </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="confirmDeleteGroup(selectedContact)">Create</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- modifyGroupModal Modal -->
+<div class="modal fade" id="modifyGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modify your contact details! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="form-wrapper">
+                        
+                        <form (keydown.enter)="$event.preventDefault()" [formGroup]="modifyContactForm" (ngSubmit)="formSubmit($event, selectedContact)">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" formControlName ="firstName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && m.firstName.errors) || (m.firstName.invalid && m.firstName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && m.firstName.errors) || (m.firstName.invalid && m.firstName.touched)" class="invalid-feedback">
+                                    <div *ngIf="m.firstName.errors.required">Email is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" formControlName ="lastName" class="form-control" [ngClass]="{ 'is-invalid': (submitted && m.lastName.errors) || (m.lastName.invalid && m.lastName.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && m.lastName.errors) || (m.lastName.invalid && m.lastName.touched)" class="invalid-feedback">
+                                    <div *ngIf="m.lastName.errors.required">Email is required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Id</label>
+                                <input type="text" formControlName ="email" class="form-control" [ngClass]="{ 'is-invalid': (submitted && m.email.errors) || (m.email.invalid && m.email.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && m.email.errors) || (m.email.invalid && m.email.touched)" class="invalid-feedback">
+                                    <div *ngIf="m.email.errors.required">Email is required</div>
+                                    <div *ngIf="m.email.errors.pattern">Email format should be <strong>someone@inmar.com</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="text" formControlName ="contactNo" class="form-control" [ngClass]="{ 'is-invalid': (submitted && m.contactNo.errors) || (m.contactNo.invalid && m.contactNo.touched) }" placeholder="{{commonPlaceholder}}">
+
+                                <div *ngIf="(submitted && m.contactNo.errors) || (m.contactNo.invalid && m.contactNo.touched)" class="invalid-feedback">
+                                    <div *ngIf="m.contactNo.errors.required">Email is required</div>
+                                    <div *ngIf="m.contactNo.errors.pattern">Contact number should be  <strong>10</strong> digits</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select formControllName="status" class="form-control"  [ngClass]="{ 'is-invalid': (submitted && m.status.errors) }" (change)="updateStatus($event)">
+                                <option [(ngValue)]="inactive">inactive</option>
+                                <option [(ngValue)]="active">active</option>
+                                </select>
+                                <div *ngIf="(submitted && m.status.errors) || (m.status.invalid && m.status.touched)" class="invalid-feedback">
+                                    <div *ngIf="m.status.errors.required">Email is required</div>
+                                    <div *ngIf="m.status.errors.pattern">Contact number should be  <strong>10</strong> digits</div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Contact</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
